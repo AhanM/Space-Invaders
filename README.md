@@ -7,6 +7,6 @@ I've used Python 2.7 and Pygame.
 
 ![Alt text](http://i.imgur.com/qD5zPCt.png)
 
-![Alt text](http://i.imgur.com/i0x2nSU.png)
+![Alt text](http://i.imgur.com/velO8Ou.png)
 
-![Alt text](http://i.imgur.com/jMf2PfW.png)
+![Alt text](http://i.imgur.com/jMf2PfW.png?1)
