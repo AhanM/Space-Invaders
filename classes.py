@@ -85,7 +85,7 @@ class Enemy(Spacecraft):
 	@staticmethod
 	def shoot():
 		for enemy in Enemy.List:
-			EnemyProjectile(enemy.rect.centerx,enemy.rect.centery,2,10,"pics/enemy_laser.jpg")
+			EnemyProjectile(enemy.rect.centerx,enemy.rect.centery,2,10,"pics/enemy_laser.jpeg")
 
 	@staticmethod
 	def checkHealth():
