@@ -11,6 +11,7 @@ screen = pygame.display.set_mode(dimensions)
 clock = pygame.time.Clock()
 FPS = 24
 total_frames = 0
+myfont = pygame.font.SysFont("serif", 18)
 
 background = pygame.image.load("../pics/background.jpg")
 gameover = pygame.image.load("../pics/gameover.png")
@@ -24,6 +25,7 @@ pygame.display.set_caption("Space-Invaders")
 # GAME LOOP
 while True:
 	# PROCESSES
+
 	if GameRunning:
 		process(player,FPS, total_frames)
 
@@ -37,6 +39,8 @@ while True:
 		
 		player.move(SCREENWIDTH)
 		
+		scoretext = myfont.render("Score = "+str(Spacecraft.score), 1, white)
+		screen.blit(scoretext, (5, 10))
 		
 		for enemy in Enemy.List:	
 			enemy.move(SCREENWIDTH)
@@ -53,6 +57,8 @@ while True:
 	else:
 		screen.fill(black)
 		screen.blit(gameover,(-20,40))
+		scoretext = myfont.render("Score = "+str(Spacecraft.score), 1, white)
+		screen.blit(scoretext, (5, 10))
 		pygame.display.flip()
 
 		for sprite in BaseClass.allsprites:
@@ -61,9 +67,11 @@ while True:
 		for proj in Projectile.allproj:
 			Projectile.allproj.remove(proj)
 			del proj
-			
+
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT: 
 	   			pygame.quit()
 				sys.exit()
+
+
 

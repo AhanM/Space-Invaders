@@ -27,6 +27,7 @@ class BaseClass(pygame.sprite.Sprite):
 class Spacecraft(BaseClass):
 	
 	List = pygame.sprite.Group()
+	score = 0
 	def __init__(self,x,y,width,height,image_string):
 		BaseClass.__init__(self,x,y,width,height,image_string)
 		Spacecraft.List.add(self)
@@ -91,8 +92,10 @@ class Enemy(Spacecraft):
 	def checkHealth():
 		for enemy in Enemy.List:
 			if enemy.health == 0:
-				enemy.image = pygame.image.load("../pics/explosion.gif")
-				enemy.velx = 0
+				if enemy.image != pygame.image.load("../pics/explosion.gif"):
+					Spacecraft.score+=5
+					enemy.image = pygame.image.load("../pics/explosion.gif")
+					enemy.velx = 0
 	
 class Projectile(pygame.sprite.Sprite):
 
