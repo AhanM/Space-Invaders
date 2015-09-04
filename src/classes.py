@@ -85,13 +85,13 @@ class Enemy(Spacecraft):
 	@staticmethod
 	def shoot():
 		for enemy in Enemy.List:
-			EnemyProjectile(enemy.rect.centerx,enemy.rect.centery,2,10,"pics/enemy_laser.jpeg")
+			EnemyProjectile(enemy.rect.centerx,enemy.rect.centery,2,10,"../pics/enemy_laser.jpeg")
 
 	@staticmethod
 	def checkHealth():
 		for enemy in Enemy.List:
 			if enemy.health == 0:
-				enemy.image = pygame.image.load("pics/explosion.gif")
+				enemy.image = pygame.image.load("../pics/explosion.gif")
 				enemy.velx = 0
 	
 class Projectile(pygame.sprite.Sprite):

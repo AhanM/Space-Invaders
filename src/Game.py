@@ -12,15 +12,15 @@ clock = pygame.time.Clock()
 FPS = 24
 total_frames = 0
 
-background = pygame.image.load("pics/background.jpg")
-gameover = pygame.image.load("pics/gameover.png")
+background = pygame.image.load("../pics/background.jpg")
+gameover = pygame.image.load("../pics/gameover.png")
 
 GameRunning = True
 
-player = PlayerShip(SCREENWIDTH/2,400,50,61,"pics/playership.gif")
+player = PlayerShip(SCREENWIDTH/2,400,50,61,"../pics/playership.gif")
 
 print("Player range: ",(player.width+20,SCREENWIDTH - player.width - 20))
-
+pygame.display.set_caption("Space-Invaders")
 # GAME LOOP
 while True:
 	# PROCESSES

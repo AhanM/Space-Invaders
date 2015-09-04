@@ -18,7 +18,7 @@ def process(player, FPS, total_frames):
 	elif keys[pygame.K_a]:
 		player.velx = -5
 	elif keys[pygame.K_SPACE]:
-		PlayerProjectile(player.rect.centerx,player.rect.centery,2,10,"pics/laser.jpg")
+		PlayerProjectile(player.rect.centerx,player.rect.centery,2,10,"../pics/laser.jpg")
 	else:
 		player.velx = 0	
 
@@ -43,7 +43,7 @@ def spawn(FPS,total_frames):
 
 		print("Spawning")
 		print(BaseClass.allsprites)
-		newenemy = Enemy(x,20,50,29,"pics/greenalien.gif")
+		newenemy = Enemy(x,20,50,29,"../pics/greenalien.gif")
 		if random.randint(1,2) == 2: newenemy.velx = -newenemy.velx
 
 def deconstruct(FPS,total_frames):
