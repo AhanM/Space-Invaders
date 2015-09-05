@@ -62,6 +62,7 @@ while True:
 	else:
 		screen.fill(black)
 		screen.blit(gameover,(-20,0))
+		music.stop()
 		scoretext = myfont.render("Score = "+str(Spacecraft.score), 1, white)
 		screen.blit(scoretext, (SCREENWIDTH, 400))
 		pygame.display.flip()
