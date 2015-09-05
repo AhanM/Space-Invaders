@@ -1,7 +1,8 @@
 import pygame,sys, random
 from classes import *
 
-def process(player, FPS, total_frames):	
+def process(player, FPS, total_frames,playerlasersound,enemylasersound):	
+	
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT: 
    			pygame.quit()
@@ -9,7 +10,7 @@ def process(player, FPS, total_frames):
 
 	spawn(FPS,total_frames)
 	collisions()
-	enemyshoot(FPS,total_frames)
+	enemyshoot(FPS,total_frames,enemylasersound)
 	deconstruct(FPS,total_frames)
 	keys = pygame.key.get_pressed()
 
@@ -19,15 +20,17 @@ def process(player, FPS, total_frames):
 		player.velx = -5
 	elif keys[pygame.K_SPACE]:
 		PlayerProjectile(player.rect.centerx,player.rect.centery,2,10,"../pics/laser.jpg")
+		playerlasersound.play()
 	else:
 		player.velx = 0	
 
-def enemyshoot(FPS,total_frames):
+def enemyshoot(FPS,total_frames,enemylasersound):
 
 	frame_in_five_seconds = FPS * 5
 
 	if total_frames % frame_in_five_seconds == 0:
 		Enemy.shoot()
+		enemylasersound.play()
 
 def spawn(FPS,total_frames):
 
@@ -41,8 +44,8 @@ def spawn(FPS,total_frames):
 		elif r == 2:
 			x = 400
 
-		print("Spawning")
-		print(BaseClass.allsprites)
+		# print("Spawning")
+		# print(BaseClass.allsprites)
 		newenemy = Enemy(x,20,50,29,"../pics/greenalien.gif")
 		if random.randint(1,2) == 2: newenemy.velx = -newenemy.velx
 
@@ -65,8 +68,8 @@ def collisions():
 		if len(enemies_hit) > 0:
 			if enemy.health!=0 : 
 				enemy.health -= enemy.damagetaken
-				print("Enemy taking damage")
-				print(enemies_hit)
+				# print("Enemy taking damage")
+				# print(enemies_hit)
 
 	for player in PlayerShip.List:
 		player_hit = pygame.sprite.spritecollide(player, EnemyProjectile.List, True)
@@ -76,7 +79,5 @@ def collisions():
 	for player in PlayerShip.List:
 		player_hit = pygame.sprite.spritecollide(player, Enemy.List, False)
 		if len(player_hit)!=0:
-			print("Enemy Player Collision")
-			# for x in player_hit: print(x)
 			if player.health!=0 : 
 				player.health = 0

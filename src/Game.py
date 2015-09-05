@@ -15,19 +15,24 @@ myfont = pygame.font.SysFont("serif", 18)
 
 background = pygame.image.load("../pics/background.jpg")
 gameover = pygame.image.load("../pics/gameover.png")
+music = pygame.mixer.Sound("../sounds/spacemusic.wav")
+music.play(-1)
+
+playerlasersound = pygame.mixer.Sound("../sounds/laser2.wav")
+playerlasersound.set_volume(0.1)
+enemylasersound = pygame.mixer.Sound("../sounds/enemy_laser1.wav")
 
 GameRunning = True
 
 player = PlayerShip(SCREENWIDTH/2,400,50,61,"../pics/playership.gif")
 
-print("Player range: ",(player.width+20,SCREENWIDTH - player.width - 20))
+
 pygame.display.set_caption("Space-Invaders")
 # GAME LOOP
 while True:
 	# PROCESSES
-
 	if GameRunning:
-		process(player,FPS, total_frames)
+		process(player,FPS, total_frames,playerlasersound,enemylasersound)
 
 		Enemy.checkHealth()
 		GameRunning = PlayerShip.checkHealth()
@@ -56,9 +61,9 @@ while True:
 
 	else:
 		screen.fill(black)
-		screen.blit(gameover,(-20,40))
+		screen.blit(gameover,(-20,0))
 		scoretext = myfont.render("Score = "+str(Spacecraft.score), 1, white)
-		screen.blit(scoretext, (5, 10))
+		screen.blit(scoretext, (SCREENWIDTH, 400))
 		pygame.display.flip()
 
 		for sprite in BaseClass.allsprites:
